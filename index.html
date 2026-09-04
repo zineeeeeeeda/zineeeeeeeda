@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="900">
+<title>Global Liquidity Monitor</title>
+<style>
+:root{--bg:#0a0f18;--p:#111827;--p2:#0e1624;--t:#e5e7eb;--m:#94a3b8;--l:#263244;--r:#fb7185;--y:#fbbf24;--g:#34d399}
+*{box-sizing:border-box}body{margin:0;background:#0a0f18;color:var(--t);font:14px Arial,sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:28px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:16px}
+h1{margin:0;font-size:28px}.sub{color:var(--m);margin-top:6px}.badge{padding:7px 10px;border:1px solid var(--l);border-radius:999px;color:#cbd5e1}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:var(--p);border:1px solid #202b3c;border-radius:16px;padding:18px}
+.hero{grid-column:span 5}.side{grid-column:span 7}.metric{grid-column:span 3}.wide{grid-column:span 12}
+.k{color:var(--m);font-size:12px;text-transform:uppercase;letter-spacing:.1em}.score{font-size:66px;font-weight:800;margin:7px 0}
+.regime{font-weight:800;color:#fecdd3}.bar{height:11px;background:#263244;border-radius:99px;overflow:hidden;margin-top:14px}.fill{height:100%;background:linear-gradient(90deg,var(--g),var(--y),var(--r))}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.box{background:var(--p2);padding:14px;border-radius:12px;border:1px solid #233047}.v{font-size:25px;font-weight:800;margin-top:5px}
+.metric .name{color:var(--m);font-size:12px}.metric .value{font-size:24px;font-weight:800;margin:7px 0}.metric .meta{color:var(--m);font-size:11px;line-height:1.5}
+.pill{float:right;padding:4px 7px;border-radius:7px;font-size:12px;font-weight:800}.red{background:#4c1724;color:#fecdd3}.yellow{background:#49350e;color:#fde68a}.green{background:#123a2a;color:#bbf7d0}
+table{width:100%;border-collapse:collapse}th,td{padding:11px;border-top:1px solid var(--l);text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--m)}
+@media(max-width:900px){.hero,.side,.metric,.wide{grid-column:span 12}.mini{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div><h1>Global Liquidity Monitor</h1><div class="sub">자동 수집 · 2년 rolling percentile · 높을수록 유동성 스트레스</div></div><div class="badge" id="updated">loading…</div></div>
+  <div class="grid">
+    <div class="card hero"><div class="k">Liquidity Stress Index</div><div class="score"><span id="stress">--</span><small style="font-size:20px;color:#94a3b8"> / 100</small></div><div class="regime" id="regime">--</div><div class="bar"><div class="fill" id="stressbar" style="width:0%"></div></div></div>
+    <div class="card side"><div class="mini"><div class="box"><div class="k">Flow stress</div><div class="v" id="flow">--</div></div><div class="box"><div class="k">Buffer stress</div><div class="v" id="buffer">--</div></div><div class="box"><div class="k">Refresh</div><div class="v" style="font-size:20px">Hourly</div><div class="sub">페이지는 15분마다 재조회</div></div></div></div>
+    <div id="metricCards" style="display:contents"></div>
+    <div class="card wide"><h3 style="margin-top:0">Signal engine</h3><table><thead><tr><th>Factor</th><th>Weight</th><th>Stress</th></tr></thead><tbody id="scores"></tbody></table></div>
+  </div>
+</div>
+<script>
+function cls(s){return s>=75?'red':s>=50?'yellow':'green'}
+function fmt(k,m){
+  if(k==='BTC') return '$'+Math.round(m.value).toLocaleString();
+  if(m.unit==='$B') return '$'+Number(m.value).toFixed(1)+'B';
+  if(m.unit==='%') return Number(m.value).toFixed(3)+'%';
+  return Number(m.value).toFixed(2);
+}
+fetch('data/latest.json?ts='+Date.now()).then(r=>r.json()).then(d=>{
+  document.getElementById('stress').textContent=d.stress.toFixed(1);
+  document.getElementById('regime').textContent=d.regime;
+  document.getElementById('flow').textContent=d.flow_stress.toFixed(1);
+  document.getElementById('buffer').textContent=d.buffer_stress.toFixed(1);
+  document.getElementById('stressbar').style.width=d.stress+'%';
+  document.getElementById('updated').textContent='Updated '+new Date(d.generated_at_utc).toLocaleString('ko-KR');
+  const order=['US10Y','DXY','TGA','ON_RRP','SOFR','STABLECOIN','BTC','RESERVES'];
+  const labels={US10Y:'US 10Y',DXY:'DXY',TGA:'TGA',ON_RRP:'ON RRP',SOFR:'SOFR',STABLECOIN:'Stablecoin MC',BTC:'BTC',RESERVES:'Fed Reserves'};
+  const cards=document.getElementById('metricCards');
+  order.forEach(k=>{
+    const m=d.metrics[k];
+    const el=document.createElement('div'); el.className='card metric';
+    el.innerHTML=`<span class="pill ${cls(m.stress)}">${m.stress.toFixed(0)}</span><div class="name">${labels[k]}</div><div class="value">${fmt(k,m)}</div><div class="meta">as of ${m.asof}</div>`;
+    cards.appendChild(el);
+  });
+  const tb=document.getElementById('scores');
+  Object.entries(d.weights).forEach(([k,w])=>{
+    if(d.scores[k]===undefined) return;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${k}</td><td>${(w*100).toFixed(0)}%</td><td><span class="pill ${cls(d.scores[k])}" style="float:none">${d.scores[k].toFixed(1)}</span></td>`;
+    tb.appendChild(tr);
+  })
+}).catch(e=>{
+  document.getElementById('updated').textContent='Data load failed';
+  console.error(e);
+})
+</script>
+</body></html>
