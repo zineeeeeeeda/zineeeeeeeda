@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-09-08T10:33:43.765800+00:00",
-  "stress": 70.1,
+  "generated_at_utc": "2026-09-08T11:32:57.513816+00:00",
+  "stress": 70.2,
   "flow_stress": 81.1,
   "buffer_stress": 71.0,
   "regime": "RISK-OFF BIAS",
@@ -12,10 +12,10 @@
       "stress": 99.2
     },
     "DXY": {
-      "value": 98.96099853515625,
+      "value": 98.9739990234375,
       "unit": "",
       "asof": "2026-09-08",
-      "stress": 36.6
+      "stress": 36.8
     },
     "TGA": {
       "value": 967.935,
@@ -36,16 +36,16 @@
       "stress": 30.4
     },
     "STABLECOIN": {
-      "value": 310.30358714987,
+      "value": 310.27154092994,
       "unit": "$B",
       "asof": "2026-09-08",
       "stress": 16.3
     },
     "BTC": {
-      "value": 78732.3671875,
+      "value": 78460.9375,
       "unit": "$",
       "asof": "2026-09-08",
-      "stress": 63.5
+      "stress": 64.6
     },
     "RESERVES": {
       "value": 2894.531,
@@ -56,13 +56,13 @@
   },
   "scores": {
     "US10Y": 99.2,
-    "DXY": 36.6,
+    "DXY": 36.8,
     "TGA": 98.1,
     "RRP_FLOW": 51.0,
     "RRP_BUFFER": 88.2,
     "SOFR": 30.4,
     "STABLECOIN": 16.3,
-    "BTC": 63.5,
+    "BTC": 64.6,
     "RESERVES": 94.3
   },
   "weights": {
