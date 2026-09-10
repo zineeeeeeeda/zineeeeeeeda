@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-10T06:38:48.895704+00:00",
+  "generated_at_utc": "2026-09-10T07:33:47.464140+00:00",
   "stress": 68.9,
   "flow_stress": 80.9,
   "buffer_stress": 68.8,
@@ -36,16 +36,16 @@
       "stress": 19.3
     },
     "STABLECOIN": {
-      "value": 310.21273783162,
+      "value": 310.22008075157,
       "unit": "$B",
       "asof": "2026-09-10",
       "stress": 16.6
     },
     "BTC": {
-      "value": 78153.203125,
+      "value": 77945.1328125,
       "unit": "$",
       "asof": "2026-09-10",
-      "stress": 65.6
+      "stress": 65.8
     },
     "RESERVES": {
       "value": 2894.531,
@@ -62,7 +62,7 @@
     "RRP_BUFFER": 92.8,
     "SOFR": 19.3,
     "STABLECOIN": 16.6,
-    "BTC": 65.6,
+    "BTC": 65.8,
     "RESERVES": 94.3
   },
   "weights": {
