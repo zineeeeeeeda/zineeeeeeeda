@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-19T21:30:04.683179+00:00",
+  "generated_at_utc": "2026-09-19T22:30:14.419086+00:00",
   "stress": 68.8,
   "flow_stress": 68.4,
   "buffer_stress": 65.3,
@@ -36,13 +36,13 @@
       "stress": 38.3
     },
     "STABLECOIN": {
-      "value": 310.03134313122996,
+      "value": 310.02151817362,
       "unit": "$B",
       "asof": "2026-09-19",
       "stress": 17.8
     },
     "BTC": {
-      "value": 81036.109375,
+      "value": 81046.6796875,
       "unit": "$",
       "asof": "2026-09-19",
       "stress": 60.9
