@@ -1,33 +1,33 @@
 {
-  "generated_at_utc": "2026-11-05T18:50:18.185745+00:00",
-  "stress": 80.0,
-  "flow_stress": 82.7,
-  "buffer_stress": 78.9,
+  "generated_at_utc": "2026-11-06T00:24:42.377365+00:00",
+  "stress": 77.0,
+  "flow_stress": 73.6,
+  "buffer_stress": 77.3,
   "regime": "TIGHT LIQUIDITY",
   "metrics": {
     "US10Y": {
-      "value": 4.95,
+      "value": 4.9,
       "unit": "%",
-      "asof": "2026-11-03",
-      "stress": 93.4
+      "asof": "2026-11-04",
+      "stress": 92.4
     },
     "DXY": {
-      "value": 101.4749984741211,
+      "value": 101.56600189208984,
       "unit": "",
       "asof": "2026-11-05",
-      "stress": 73.2
+      "stress": 73.6
     },
     "TGA": {
-      "value": 999.727,
-      "unit": "$B",
-      "asof": "2026-10-28",
-      "stress": 99.0
-    },
-    "ON_RRP": {
-      "value": 0.225,
+      "value": 957.175,
       "unit": "$B",
       "asof": "2026-11-04",
-      "stress": 95.8
+      "stress": 93.3
+    },
+    "ON_RRP": {
+      "value": 0.125,
+      "unit": "$B",
+      "asof": "2026-11-05",
+      "stress": 98.6
     },
     "SOFR": {
       "value": 3.94,
@@ -36,34 +36,34 @@
       "stress": 46.5
     },
     "STABLECOIN": {
-      "value": 294.61176862009995,
+      "value": 294.56746058567,
       "unit": "$B",
       "asof": "2026-11-05",
       "stress": 54.7
     },
     "BTC": {
-      "value": 76008.8125,
+      "value": 76070.2890625,
       "unit": "$",
-      "asof": "2026-11-05",
-      "stress": 76.7
+      "asof": "2026-11-06",
+      "stress": 76.8
     },
     "RESERVES": {
-      "value": 2893.77,
+      "value": 2930.088,
       "unit": "$B",
-      "asof": "2026-10-28",
-      "stress": 94.3
+      "asof": "2026-11-04",
+      "stress": 86.7
     }
   },
   "scores": {
-    "US10Y": 93.4,
-    "DXY": 73.2,
-    "TGA": 99.0,
-    "RRP_FLOW": 54.9,
-    "RRP_BUFFER": 95.8,
+    "US10Y": 92.4,
+    "DXY": 73.6,
+    "TGA": 93.3,
+    "RRP_FLOW": 40.9,
+    "RRP_BUFFER": 98.6,
     "SOFR": 46.5,
     "STABLECOIN": 54.7,
-    "BTC": 76.7,
-    "RESERVES": 94.3
+    "BTC": 76.8,
+    "RESERVES": 86.7
   },
   "weights": {
     "US10Y": 0.18,
