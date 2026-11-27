@@ -1,33 +1,33 @@
 {
-  "generated_at_utc": "2026-11-27T15:17:14.684548+00:00",
-  "stress": 77.3,
-  "flow_stress": 70.2,
-  "buffer_stress": 70.3,
+  "generated_at_utc": "2026-11-27T23:34:50.606288+00:00",
+  "stress": 75.8,
+  "flow_stress": 69.0,
+  "buffer_stress": 70.4,
   "regime": "TIGHT LIQUIDITY",
   "metrics": {
     "US10Y": {
-      "value": 4.91,
+      "value": 4.85,
       "unit": "%",
-      "asof": "2026-11-24",
-      "stress": 90.8
+      "asof": "2026-11-25",
+      "stress": 89.8
     },
     "DXY": {
-      "value": 103.96199798583984,
+      "value": 104.01399993896484,
       "unit": "",
       "asof": "2026-11-27",
       "stress": 84.9
     },
     "TGA": {
-      "value": 916.613,
-      "unit": "$B",
-      "asof": "2026-11-18",
-      "stress": 82.9
-    },
-    "ON_RRP": {
-      "value": 0.3,
+      "value": 902.038,
       "unit": "$B",
       "asof": "2026-11-25",
-      "stress": 91.6
+      "stress": 74.3
+    },
+    "ON_RRP": {
+      "value": 0.35,
+      "unit": "$B",
+      "asof": "2026-11-27",
+      "stress": 89.2
     },
     "SOFR": {
       "value": 3.95,
@@ -36,34 +36,34 @@
       "stress": 50.7
     },
     "STABLECOIN": {
-      "value": 281.91808340284,
+      "value": 281.93967442204996,
       "unit": "$B",
       "asof": "2026-11-27",
       "stress": 60.5
     },
     "BTC": {
-      "value": 59545.921875,
+      "value": 59782.55078125,
       "unit": "$",
       "asof": "2026-11-27",
-      "stress": 99.5
+      "stress": 99.2
     },
     "RESERVES": {
-      "value": 2979.656,
+      "value": 2963.667,
       "unit": "$B",
-      "asof": "2026-11-18",
-      "stress": 68.6
+      "asof": "2026-11-25",
+      "stress": 71.4
     }
   },
   "scores": {
-    "US10Y": 90.8,
+    "US10Y": 89.8,
     "DXY": 84.9,
-    "TGA": 82.9,
-    "RRP_FLOW": 59.1,
-    "RRP_BUFFER": 91.6,
+    "TGA": 74.3,
+    "RRP_FLOW": 61.2,
+    "RRP_BUFFER": 89.2,
     "SOFR": 50.7,
     "STABLECOIN": 60.5,
-    "BTC": 99.5,
-    "RESERVES": 68.6
+    "BTC": 99.2,
+    "RESERVES": 71.4
   },
   "weights": {
     "US10Y": 0.18,
